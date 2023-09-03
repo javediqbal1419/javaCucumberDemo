@@ -22,8 +22,10 @@ public class LoginSteps {
 
     @Given("I go to the Application")
     public void i_go_to_the(String url) {
+        help.setEnviron(url);
 
-//        help.setUrls(url);
+
+
 
          }
     @When("I input {string}")

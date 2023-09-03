@@ -4,7 +4,6 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 
@@ -12,6 +11,7 @@ import java.io.IOException;
 
 
 public class TestHelper {
+    WebDriver driver;
     public static ConfigDataProvider config = null;
 
     public static WebDriver startApplication(String browserName) throws IOException {
@@ -95,4 +95,13 @@ public static void  configureDriverPath() throws IOException {
         String chromeDriverPath = System.getProperty("user.dir") + "//src//test//resources//drivers//windows//chromedriver.exe";
         System.setProperty("webdriver.chrome.driver", chromeDriverPath);
     }
-}}
+
+    }
+    public void setEnviron(String url){
+        String baseURL = config.getApplicationUrl(url);
+        driver.get(url);
+        System.out.println("Here01");
+
+    }
+
+}

@@ -51,7 +51,7 @@ public class ConfigDataProvider {
         return  pro.getProperty("chromePath");
     }
 
-    public String getApplicationUrl()
+    public String getApplicationUrl(String url)
 
     {
         return pro.getProperty("url");
@@ -65,7 +65,7 @@ public class ConfigDataProvider {
     public String passWord()
 
     {
-        return pro.getProperty("pass");
+        return pro.getProperty("password");
     }
 }
 
