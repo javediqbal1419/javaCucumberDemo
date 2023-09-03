@@ -1,30 +1,71 @@
 package Helper;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.log4testng.Logger;
 
-import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.Properties;
-public class ConfigReader {
+public class ConfigDataProvider {
 
-    public static Properties initializeProperties() {
-        Properties prop = new Properties();
-        File proFile = new File(System.getProperty("user.dir" + "src/test/resources/Config/config.properties"));
-        try {
-            FileInputStream fis = new FileInputStream(proFile);
-            prop.load(fis);
-        } catch (Throwable e) {
-            e.printStackTrace();
-        }
-        return prop;
+    static Properties pro;
+    public Logger logger;
+
+    public ConfigDataProvider() throws IOException  {
+
+        pro = new Properties();
+        FileInputStream ip = new FileInputStream(
+                System.getProperty("user.dir")+"/src/test/resources/Config/config.properties");
+
+        pro.load(ip);
+            }
+
+    public String getDataFromConfig (String keyToSearch)
+    {
+
+        return pro.getProperty(keyToSearch);
     }
-    public String getBrowser(){
-        return initializeProperties().getProperty("browser");
+
+    public String getFirefoxPath()
+
+    {
+        return pro.getProperty("geckoPath");
     }
-    public String getChromePath(){
-        return initializeProperties().getProperty("chromePath");
+
+    public String getIEPath()
+
+    {
+        return pro.getProperty("IEPath");
+    }
+
+
+    public  String getBrowser ()
+
+    {
+
+       return  pro.getProperty("browserType");
+
+
+
+    }
+    public static String getChromePath(){
+        return  pro.getProperty("chromePath");
+    }
+
+    public String getApplicationUrl()
+
+    {
+        return pro.getProperty("url");
+    }
+
+    public String userName()
+
+    {
+        return pro.getProperty("userName");
+    }
+    public String passWord()
+
+    {
+        return pro.getProperty("pass");
     }
 }
 
