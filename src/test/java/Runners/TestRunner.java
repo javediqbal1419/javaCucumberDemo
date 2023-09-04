@@ -22,7 +22,6 @@ import static org.asynchttpclient.Dsl.config;
         monochrome = true)
 public class TestRunner extends AbstractTestNGCucumberTests {
 
-
     public static ConfigDataProvider config = null;
 
 
@@ -47,12 +46,11 @@ public class TestRunner extends AbstractTestNGCucumberTests {
     public WebDriver openBrowser() throws IOException {
 
         config = new ConfigDataProvider();
-        TestHelper.configureDriverPath();
 
-        WebDriver driver = TestHelper.startApplication(config.getBrowser());
-
+       WebDriver driver = TestHelper.startApplication(config.getBrowser());
 
         System.out.println("Browser Name: "+driver);
+        driver.get("https://opensource-demo.orangehrmlive.com/");
         return driver;
 
 
