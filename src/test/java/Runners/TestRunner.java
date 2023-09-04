@@ -50,7 +50,7 @@ public class TestRunner extends AbstractTestNGCucumberTests {
        WebDriver driver = TestHelper.startApplication(config.getBrowser());
 
         System.out.println("Browser Name: "+driver);
-        driver.get("https://opensource-demo.orangehrmlive.com/");
+//        driver.get("https://opensource-demo.orangehrmlive.com/");
         return driver;
 
 
