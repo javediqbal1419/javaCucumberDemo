@@ -44,15 +44,15 @@ public class TestHelper {
 
             case TestConstants.BROWSER_CHROME:
 
-
-                WebDriverManager.chromedriver().setup();
-                System.out.println("Here06");
-                ChromeOptions options = new ChromeOptions();
-                options.addArguments("--remote-allow-origins=*");
-                driver = new ChromeDriver(options);
-                driver.manage().window().maximize();
-//                driver.get("http://www.google.com");
-                System.out.println("Here07");
+//
+//                WebDriverManager.chromedriver().setup();
+//                System.out.println("Here06");
+//                ChromeOptions options = new ChromeOptions();
+//                options.addArguments("--remote-allow-origins=*");
+//                driver = new ChromeDriver(options);
+//                driver.manage().window().maximize();
+////                driver.get("http://www.google.com");
+//                System.out.println("Here07");
 
                 break;
 
