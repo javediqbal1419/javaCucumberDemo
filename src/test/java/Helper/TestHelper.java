@@ -6,13 +6,15 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.support.PageFactory;
+
 import java.io.IOException;
 
 
 
 public class TestHelper {
-    WebDriver lDriver = null;
 
+    private WebDriver driver;
     public static ConfigDataProvider config;
 
     static {
@@ -23,7 +25,6 @@ public class TestHelper {
         }
     }
 
-    private WebDriver ldriver;
 
     public static WebDriver startApplication(String browserName) throws IOException {
         WebDriver driver = null;
@@ -81,22 +82,31 @@ public class TestHelper {
         String baseURL = config.getApplicationUrl(url);
         System.out.println("URLs: "+baseURL);
         getDriver().get(baseURL);
+
+        System.out.println("Here010");
         System.out.println("This is driver: ");
         System.out.println("Here01");
 
     }
+
+
+
     public String getUserName(){
         String name =config.userName();
         return name;
     }
 
     public WebDriver getDriver(){
-        return ldriver;
+        if (driver==null){
+            WebDriverManager.chromedriver().setup();
 
-    }
-    public void setDriver(WebDriver _driver)
-    {
-        lDriver = _driver;
+            ChromeOptions options = new ChromeOptions();
+            options.addArguments("--remote-allow-origins=*");
+            driver = new ChromeDriver(options);
+            driver.manage().window().maximize();
+        }
+
+        return driver;
     }
 
 
