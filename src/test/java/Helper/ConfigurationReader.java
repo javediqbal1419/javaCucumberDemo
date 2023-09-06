@@ -12,7 +12,7 @@ public class ConfigurationReader {
         try {
             properties = new Properties();
             FileInputStream fileInputStream = new FileInputStream(
-                    System.getProperty("user.dir"+"/src/test/resources/Config/config.properties"));
+                    System.getProperty("user.dir")+"/src/test/resources/Config/config.properties");
 
             properties.load(fileInputStream);
             fileInputStream.close();
@@ -28,5 +28,11 @@ public class ConfigurationReader {
     }
     public static String getApplicationURL(){
         return properties.getProperty("applicationURL");
+    }
+    public static String getUserName(){
+        return properties.getProperty("userName");
+    }
+    public static String getPassword(){
+        return properties.getProperty("userPassword");
     }
 }

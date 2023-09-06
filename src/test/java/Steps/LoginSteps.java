@@ -1,35 +1,28 @@
 package Steps;
 
-import Helper.TestHelper;
+import Helper.DriverManager;
 import Pages.LoginPage;
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.io.IOException;
-import java.util.List;
-import java.util.Set;
 
 public class LoginSteps {
 
+    public WebDriver driver;
 
+    LoginPage login = new LoginPage();
 
-        @Given("I go to the Application {string}")
-        public void i_go_to_the (String url){
-            help.setEnviron(url);
+    public LoginSteps() throws IOException {
+        this.driver = DriverManager.getDriver();
+    }
 
-
-        }
         @When("I input the username {string}")
         public void i_input (String _name){
-            login.loginBtn(_name);
+            System.out.println("This is Driver in Steps: "+driver);
+            login.loginName(_name);
 
         }
         @And("I input the password {string}")
@@ -49,4 +42,3 @@ public class LoginSteps {
         }
 
     }
-}
