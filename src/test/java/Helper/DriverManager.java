@@ -16,7 +16,6 @@ public class DriverManager {
             switch (driverName.toLowerCase()){
                 case "chrome":
                     WebDriverManager.chromedriver().setup();
-                    System.out.println("Here06");
                     ChromeOptions options = new ChromeOptions();
                     options.addArguments("--remote-allow-origins=*");
                     driver = new ChromeDriver(options);
@@ -30,7 +29,6 @@ public class DriverManager {
                     firefoxOptions.addArguments("--remote-allow-origins=*");
                     driver = new FirefoxDriver(firefoxOptions);
                     driver.manage().window().maximize();
-                    System.out.println("Here07");
 
                     break;
                 default:
