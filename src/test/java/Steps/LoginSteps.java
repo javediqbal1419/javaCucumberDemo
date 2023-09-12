@@ -23,8 +23,6 @@ public class LoginSteps {
         public void i_input (String _name) throws InterruptedException {
 
             login.loginName(_name);
-            System.out.println("This is Driver in Steps: "+driver);
-
         }
         @And("I input the password {string}")
         public void i_input_the (String pd){

@@ -6,9 +6,14 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.support.PageFactory;
 
 public class DriverManager {
     public static WebDriver driver;
+
+    DriverManager(){
+        PageFactory.initElements(driver, this);
+    }
 
     public static WebDriver getDriver(){
         if (driver==null){
@@ -19,8 +24,7 @@ public class DriverManager {
                     ChromeOptions options = new ChromeOptions();
                     options.addArguments("--remote-allow-origins=*");
                     driver = new ChromeDriver(options);
-                    driver.manage().window().maximize();
-                    System.out.println("Here07");
+//                    driver.manage().window().maximize();
                     break;
                     
                 case "firefox":
