@@ -1,8 +1,10 @@
 package Steps;
 
+import Helper.ConfigurationReader;
 import Helper.DriverManager;
 import Pages.LoginPage;
 import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
@@ -19,11 +21,21 @@ public class LoginSteps {
         this.driver = DriverManager.getDriver();
     }
 
+        @Given("I go the Application {string}")
+        public void applicationURLs(WebDriver driver){
+//            String baseURL = ConfigurationReader.getApplicationURL();
+//            driver.get(baseURL);
+
+        }
+        @Given("I am on the Application Login page")
+        public void applicationHomePage(){
+        login.loginPageTitle();
+
+        }
+
         @When("I input the username {string}")
         public void i_input (String _name) throws InterruptedException {
             login.loginName(_name);
-            System.out.println("This is Driver in Steps: "+driver);
-
         }
         @And("I input the password {string}")
         public void i_input_the (String pd){

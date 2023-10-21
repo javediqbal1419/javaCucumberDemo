@@ -2,44 +2,53 @@ package Pages;
 
 import Helper.ConfigurationReader;
 import Helper.DriverManager;
+import Helper.TestHelper;
 import Runners.TestRunner;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.Assert;
+import org.testng.asserts.Assertion;
 
-import java.io.IOException;
-import java.util.concurrent.TimeUnit;
 
-public class LoginPage extends TestRunner {
+public class LoginPage extends TestHelper {
 
 
     public WebDriver driver;
+    private TestHelper help = new TestHelper();
 
     public LoginPage(){
         this.driver = DriverManager.getDriver();
+        PageFactory.initElements(driver, this);
     }
 
-    By name01= By.name("username");
+    @FindBy(how =  How.XPATH, using = "//h5[contains(.,'Login')]")
+    private WebElement txtTitle;
 
-    @FindBy(how = How.XPATH, using = "//form//input[contains(@class, 'active') and @name='username']")
-    @CacheLookup
-    public WebElement txtUserName;
-
-    @FindBy(how = How.NAME,using = "username")
-    @CacheLookup
+    @FindBy(how = How.NAME,using ="username")
     private WebElement userBox;
     @FindBy(how = How.NAME, using = "password")
-    WebElement txtPass;
+    WebElement passBox;
 
-    @FindBy(how = How.XPATH, using = "")
+    @FindBy(how = How.XPATH, using ="//button[@type='submit']")
     WebElement btn_sub;
 
 
+    public void loginPageTitle(){
+        WebElement element= getWait().until(ExpectedConditions.visibilityOf(txtTitle));
+        String lgTitle = element.getText();
+
+        Assert.assertEquals("Login", lgTitle);
+
+        System.out.println("This is title: "+lgTitle);
+    }
+
     public void loginName(String name) throws InterruptedException {
         String uName = ConfigurationReader.getUserName();
+<<<<<<< HEAD
 
         Thread.sleep(300);
 //        WebElement el01 =   driver.findElement(By.name("username"));
@@ -51,18 +60,19 @@ public class LoginPage extends TestRunner {
 //        WebElement username = driver.findElement(name01);
         System.out.println("System: ");
 //        username.sendKeys("Admin");
+=======
+        getWait().until(ExpectedConditions.visibilityOf(userBox));
+        userBox.sendKeys(uName);
+>>>>>>> 74dd311b4d46bfe20604b2bd19033b3e16bdc328
 
     }
     public void loginPass(String pwd){
         String uPWD = ConfigurationReader.getPassword();
-//        txtPass.sendKeys(uPWD);
+        passBox.sendKeys(uPWD);
 
-        WebElement p_el =   driver.findElement(By.name("password"));
-        p_el.sendKeys(uPWD);
             }
     public void submit_btn(){
-        driver.findElement(By.xpath("//button[@type='submit']")).click();
-//        btn_sub.click();
+        btn_sub.click();
 
     }
 }
