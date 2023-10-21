@@ -20,7 +20,7 @@ public class DriverManager {
                     options.addArguments("--remote-allow-origins=*");
                     driver = new ChromeDriver(options);
                     driver.manage().window().maximize();
-                    System.out.println("Here07");
+                    System.out.println("This is Chrome Driver Manager");
                     break;
                     
                 case "firefox":

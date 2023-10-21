@@ -42,13 +42,14 @@ public class LoginPage extends TestRunner {
         String uName = ConfigurationReader.getUserName();
 
         Thread.sleep(300);
-        WebElement el01 =   driver.findElement(By.name("username"));
-        System.out.println("This is element: "+el01);
-        el01.sendKeys(uName);
+//        WebElement el01 =   driver.findElement(By.name("username"));
+//        System.out.println("This is element: "+el01);
+//        el01.sendKeys(uName);
+        driver.findElement(By.name("username")).sendKeys("Admin");
 
-//        driver.findElement(By.name("username")).sendKeys("Admin");
+//        driver.findElement(By.name("username")).sendKeys(uName);
 //        WebElement username = driver.findElement(name01);
-//        System.out.println("System: "+username);
+        System.out.println("System: ");
 //        username.sendKeys("Admin");
 
     }

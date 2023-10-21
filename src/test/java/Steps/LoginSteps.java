@@ -21,7 +21,6 @@ public class LoginSteps {
 
         @When("I input the username {string}")
         public void i_input (String _name) throws InterruptedException {
-
             login.loginName(_name);
             System.out.println("This is Driver in Steps: "+driver);
 
