@@ -10,6 +10,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.Assert;
+import org.testng.asserts.Assertion;
 
 
 public class LoginPage extends TestHelper {
@@ -23,6 +25,9 @@ public class LoginPage extends TestHelper {
         PageFactory.initElements(driver, this);
     }
 
+    @FindBy(how =  How.XPATH, using = "//h5[contains(.,'Login')]")
+    private WebElement txtTitle;
+
     @FindBy(how = How.NAME,using ="username")
     private WebElement userBox;
     @FindBy(how = How.NAME, using = "password")
@@ -32,10 +37,18 @@ public class LoginPage extends TestHelper {
     WebElement btn_sub;
 
 
+    public void loginPageTitle(){
+        WebElement element= getWait().until(ExpectedConditions.visibilityOf(txtTitle));
+        String lgTitle = element.getText();
+
+        Assert.assertEquals("Login", lgTitle);
+
+        System.out.println("This is title: "+lgTitle);
+    }
+
     public void loginName(String name) throws InterruptedException {
         String uName = ConfigurationReader.getUserName();
         getWait().until(ExpectedConditions.visibilityOf(userBox));
-//        Thread.sleep(3000);
         userBox.sendKeys(uName);
 
     }
