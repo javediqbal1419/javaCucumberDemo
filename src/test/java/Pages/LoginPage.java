@@ -4,6 +4,7 @@ import Helper.ConfigurationReader;
 import Helper.DriverManager;
 import Helper.TestHelper;
 import Runners.TestRunner;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -48,7 +49,6 @@ public class LoginPage extends TestHelper {
 
     public void loginName(String name) throws InterruptedException {
         String uName = ConfigurationReader.getUserName();
-<<<<<<< HEAD
 
         Thread.sleep(300);
 //        WebElement el01 =   driver.findElement(By.name("username"));
@@ -60,10 +60,8 @@ public class LoginPage extends TestHelper {
 //        WebElement username = driver.findElement(name01);
         System.out.println("System: ");
 //        username.sendKeys("Admin");
-=======
         getWait().until(ExpectedConditions.visibilityOf(userBox));
         userBox.sendKeys(uName);
->>>>>>> 74dd311b4d46bfe20604b2bd19033b3e16bdc328
 
     }
     public void loginPass(String pwd){
