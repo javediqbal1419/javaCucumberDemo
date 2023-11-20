@@ -48,8 +48,22 @@ public class LoginPage extends TestHelper {
 
     public void loginName(String name) throws InterruptedException {
         String uName = ConfigurationReader.getUserName();
+<<<<<<< HEAD
+
+        Thread.sleep(300);
+//        WebElement el01 =   driver.findElement(By.name("username"));
+//        System.out.println("This is element: "+el01);
+//        el01.sendKeys(uName);
+        driver.findElement(By.name("username")).sendKeys("Admin");
+
+//        driver.findElement(By.name("username")).sendKeys(uName);
+//        WebElement username = driver.findElement(name01);
+        System.out.println("System: ");
+//        username.sendKeys("Admin");
+=======
         getWait().until(ExpectedConditions.visibilityOf(userBox));
         userBox.sendKeys(uName);
+>>>>>>> 74dd311b4d46bfe20604b2bd19033b3e16bdc328
 
     }
     public void loginPass(String pwd){

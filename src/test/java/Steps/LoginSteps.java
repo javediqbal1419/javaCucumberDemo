@@ -35,7 +35,6 @@ public class LoginSteps {
 
         @When("I input the username {string}")
         public void i_input (String _name) throws InterruptedException {
-
             login.loginName(_name);
         }
         @And("I input the password {string}")
