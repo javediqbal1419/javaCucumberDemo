@@ -7,6 +7,7 @@ import Helper.TestHelper;
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
 
@@ -15,10 +16,8 @@ import org.testng.annotations.BeforeClass;
         monochrome = true)
 public class TestRunner extends AbstractTestNGCucumberTests {
 
-    private WebDriver driver;
-    private TestHelper helper = new TestHelper();
-
-
+    private static WebDriver driver;
+//    private TestHelper helper = new TestHelper();
     public TestRunner(){
         driver = DriverManager.getDriver();
     }
@@ -28,9 +27,13 @@ public class TestRunner extends AbstractTestNGCucumberTests {
         openBrowser();
 
     }
+    @AfterClass
+    public void tearDown(){
+//        driver.quit();
+    }
 
     private void openBrowser() {
-        helper.maximizeWindows();
+//        helper.maximizeWindows();
         String baseURL = ConfigurationReader.getApplicationURL();
         driver.get(baseURL);
 

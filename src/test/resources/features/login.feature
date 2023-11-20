@@ -12,7 +12,7 @@ Login to the Application
 
       Examples:
       |username|password|
-      |Admin   |admin123|
+      |Admin01   |admin123|
 #
 #      Scenario: Add Employee into the Application
 #        When I click on the Add Employee button
